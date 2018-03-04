@@ -1,6 +1,6 @@
 {
   "variables": {
-    "iso_url": "http://mirror.1000mbps.com/centos/7/isos/x86_64/CentOS-7-x86_64-NetInstall-1511.iso",
+    "iso_url": "http://archive.kernel.org/centos-vault/7.2.1511/isos/x86_64/CentOS-7-x86_64-NetInstall-1511.iso",
     "iso_checksum": "99d305fa40ec9e28ef8450c3bcc45f85"
   },
   "builders": [
@@ -35,7 +35,7 @@
       "net_device": "virtio-net",
 
       "boot_wait": "3s",
-      "headless": false,
+      "headless": true,
       "boot_command": [
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
       ],

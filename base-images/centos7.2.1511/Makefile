@@ -1,9 +1,9 @@
 NAME=centos7.2.1511
-REPO=dock2box
+REPO=wesparish
 REG=
 SYS=$(shell uname -s)
 REL=$(shell git rev-parse --verify --short HEAD)
-VIRT_TAR_OUT=dock2box/debian8.5-virt-tar-out
+VIRT_TAR_OUT=wesparish/debian8.5-virt-tar-out
 
 # To use VM-Ware builder, specify:
 # make BUILDER=vmware-iso
@@ -27,7 +27,7 @@ test:
 
 build: clean test
 	docker login
-	packer build -only=$(BUILDER) -var "vm_name=$(NAME)" template.json
+	PACKER_LOG=1 packer build -only=$(BUILDER) -var "vm_name=$(NAME)" template.json
 
 import: build
 	docker pull $(REG)$(VIRT_TAR_OUT):latest
