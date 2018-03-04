@@ -29,6 +29,7 @@ ENV SSL_O dock2box
 ENV SSL_C NL
 
 RUN set -ex ;\
+    apt update && apt install openssl && apt clean &&\
     mkdir -p ${SSL_DIR} ;\
     openssl req -nodes -new -x509 -keyout ${SSL_DIR}/server.key -out ${SSL_DIR}/server.crt -subj "/CN=${SSL_CN}/O=${SSL_O}/C=${SSL_C}"
 

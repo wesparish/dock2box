@@ -1,5 +1,5 @@
 NAME=debian8.5-virt-tar-out
-REPO=dock2box
+REPO=wesparish
 REG=
 
 all: push

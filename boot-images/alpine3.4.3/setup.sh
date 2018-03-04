@@ -33,6 +33,7 @@ apk add pciutils \
         lvm2 \
         gptfdisk \
         openssh \
+        openssl \
         openssh-client \
         sudo \
         curl \

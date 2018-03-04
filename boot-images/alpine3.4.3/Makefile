@@ -1,7 +1,7 @@
 NAME=boot-image
-BOOTIMG=alpine3.4.3
-USER=mickep76
-REPO=dock2box
+BOOTIMG=alpine3.4.3:latest
+USER=wesparish
+REPO=wesparish
 REG=
 REL=$(shell git rev-parse --verify --short HEAD)
 TS=$(shell date -u +'%F %T UTC')
@@ -13,8 +13,8 @@ clean:
 	docker rmi ${NAME} &>/dev/null || true
 
 build:
-	docker pull $(REG)$(REPO)/$(BOOTIMG):latest 
-	docker run --rm -v "$${PWD}":/build -w /build $(REG)$(REPO)/$(BOOTIMG):latest ./setup.sh $(REL) "$(TS)"
+	docker pull $(REG)$(REPO)/$(BOOTIMG)
+	docker run --rm -v "$${PWD}":/build -w /build $(REG)$(REPO)/$(BOOTIMG) ./setup.sh $(REL) "$(TS)"
 	docker build --pull=true --no-cache -t $(REG)$(REPO)/$(NAME):$(REL) --build-arg REL=$(REL) --build-arg TS="$(TS)" .
 	docker tag $(REG)$(REPO)/$(NAME):$(REL) $(REEG)$(REPO)/$(NAME):latest
 
